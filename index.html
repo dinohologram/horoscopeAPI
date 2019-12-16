@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>Aztro API</div>
+    <div id = "aztroID"></div>
+    <br>
+    <div>Horosopes API</div>
+    <div id = "horoscopesID"></div>
+    <br>
+    <div>Astrology.com API</div>
+    <div id = "astrologyID"></div>
+
+    
+<script>
+
+    // Makes 3 API calls and spits out horoscopes from 3 sources
+
+    const aztro = new XMLHttpRequest() // POST: https://aztro.sameerkumar.website?sign= <sign> &day= <day>
+
+    // const horoscopesAPI = new XMLHttpRequest() //http://HoroscopesAPI.com/ <sign> //ACAO error
+
+    const ohmanda = new XMLHttpRequest() // http://ohmanda.com/api/horoscope/ <sign>
+
+    const sign = 'pisces'
+    let day = 'today'
+
+// URLs
+
+    const urlAztro = `https://aztro.sameerkumar.website?sign=${sign}&day=${day}`
+
+    const urlHoroscopesAPI = `http://HoroscopesAPI.com/${sign}`
+
+    const urlOhmanda = `http://ohmanda.com/api/horoscope/${sign}/` 
+
+//------------------------------
+
+    aztro.open('POST', urlAztro, true)
+
+    // horoscopesAPI.open('GET', urlHoroscopesAPI, true) //still not sure of best method
+
+    ohmanda.open('GET', urlOhmanda, true) 
+
+//-----------------------------
+
+    ohmanda.setRequestHeader('Content-Type', 'text/plain')
+//------------------------------
+
+    aztro.onload = () => {
+
+        const dataAztro = JSON.parse(aztro.responseText)
+
+        document.getElementById('aztroID').innerHTML = dataAztro.description
+
+    }
+
+    // horoscopesAPI.onload = () => {
+
+    //     const dataHoroscopesAPI = JSON.parse(horoscopesAPI.responseText)
+
+        // document.getElementById('horoscopesID').innerHTML = dataHoroscopesAPI['']
+
+    //     //console.log(dataHoroscopesAPI) //ACAO error
+        
+        
+
+    // }
+
+    ohmanda.onload = () => {
+
+        const dataOhmanda = JSON.parse(ohmanda.responseText)
+
+        //document.getElementById('astrologyID').innerHTML = dataOhmanda['']
+        
+        console.log(dataOhmanda)
+
+    }
+
+//------------------------------
+
+aztro.send()
+// horoscopesAPI.send() //Works but blocked due to ACAO error
+ohmanda.send()
+
+</script>
+</body>
+</html>
