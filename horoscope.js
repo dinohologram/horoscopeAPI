@@ -8,13 +8,11 @@
 
     // POST: https://aztro.sameerkumar.website?sign= <sign> &day= <day>
 
-    //http://HoroscopesAPI.com/ <sign> //ACAO error
-
      // http://ohmanda.com/api/horoscope/ <sign>
 
     const zodiac = ['aries', 'taurus', 'gemeni', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagitarius', 'capricorn', 'aquarius', 'pisces']
 
-    const sign = zodiac[11]
+    const sign = zodiac[11] //change this to your sign
 
     let day = 'today'
 
@@ -64,4 +62,3 @@ async function ohmanda(urlOhmanda) {
 ohmanda(urlOhmanda)
 console.log('-------------------------' + sign + '---------------------------------------------')
 aztro(urlAztro)
-//horoscopes(sign)

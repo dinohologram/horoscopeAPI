@@ -10,7 +10,7 @@
     <div>Aztro API</div>
     <div id = "aztroID"></div>
     <br>
-    <div>Horosopes API</div>
+    <div>Horoscopes API</div>
     <div id = "horoscopesID"></div>
     <br>
     <div>Astrology.com API</div>
@@ -27,7 +27,10 @@
 
     const ohmanda = new XMLHttpRequest() // http://ohmanda.com/api/horoscope/ <sign>
 
-    const sign = 'pisces'
+    const zodiac = ['aries', 'taurus', 'gemeni', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagitarius', 'capricorn', 'aquarius', 'pisces']
+
+    const sign = zodiac[3]
+
     let day = 'today'
 
 // URLs
@@ -48,7 +51,9 @@
 
 //-----------------------------
 
-    ohmanda.setRequestHeader('Content-Type', 'text/plain')
+
+    ohmanda.setRequestHeader('Content-Type', 'application/json')
+
 //------------------------------
 
     aztro.onload = () => {
